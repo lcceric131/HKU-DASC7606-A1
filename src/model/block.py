@@ -64,7 +64,7 @@ class Bottleneck(nn.Module):
 
         self.conv1 = redefine_conv1x1(in_planes, planes)
         self.bn1 = nn.BatchNorm2d(planes)
-        self.conv2 = redefine_conv3x3(planes,planes)
+        self.conv2 = redefine_conv3x3(planes,planes, stride)
         self.bn2 = nn.BatchNorm2d(planes)
         self.conv3 = redefine_conv1x1(planes, planes * Bottleneck.expansion)
         self.bn3 = nn.BatchNorm2d(planes * Bottleneck.expansion)
