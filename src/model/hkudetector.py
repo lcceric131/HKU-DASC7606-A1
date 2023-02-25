@@ -19,7 +19,10 @@ class ResNet(nn.Module):
         ###################################################################
         # TODO: Please fill the codes below with the *self._make_layer()* function
         ##################################################################
-        pass
+        self.layer1 = self._make_layer(block, 64, layer[0])
+        self.layer2 = self._make_layer(block, 128, layer[1])
+        self.layer3 = self._make_layer(block, 256, layer[2])
+        self.layer4 = self._make_layer(block, 512, layer[3])
 
         ##################################################################
 
@@ -33,7 +36,7 @@ class ResNet(nn.Module):
         self.det_head = self._make_detection_head(in_channels="?", out_channels="?")
         ##################################################################
                 
-        def _weights_init(m):
+         def _weights_init(m):
             """ kaiming init (https://arxiv.org/abs/1502.01852v1)"""
             if isinstance(m, nn.Linear) or isinstance(m, nn.Conv2d):
                 nn.init.kaiming_normal_(m.weight)
